@@ -1,0 +1,24 @@
+[2022/04/30 19:26:56.745 -05:00] [INFO] [client.go:378] ["[pd] create pd client with endpoints"] [pd-address="[127.0.0.1:2379]"]
+[2022/04/30 19:26:56.775 -05:00] [INFO] [base_client.go:350] ["[pd] switch leader"] [new-leader=http://127.0.0.1:2379] [old-leader=]
+[2022/04/30 19:26:56.775 -05:00] [INFO] [base_client.go:105] ["[pd] init cluster id"] [cluster-id=7092452665721740300]
+[2022/04/30 19:26:56.775 -05:00] [INFO] [client.go:673] ["[pd] tso dispatcher created"] [dc-location=global]
+***************** properties *****************
+"recordcount"="10000"
+"operationcount"="100000"
+"threadcount"="28"
+"workload"="core"
+"tikv.pd"="127.0.0.1:2379"
+"dotransactions"="true"
+"readproportion"="0.5"
+"requestdistribution"="uniform"
+"insertproportion"="0"
+"updateproportion"="0.5"
+"tikv.type"="raw"
+"readallfields"="true"
+"scanproportion"="0"
+**********************************************
+Run finished, takes 9.011473375s
+READ   - Takes(s): 9.0, Count: 49983, OPS: 5583.9, Avg(us): 1168, Min(us): 94, Max(us): 112945, 99th(us): 10000, 99.9th(us): 37000, 99.99th(us): 82000
+UPDATE - Takes(s): 8.9, Count: 50005, OPS: 5592.3, Avg(us): 3786, Min(us): 368, Max(us): 126109, 99th(us): 26000, 99.9th(us): 70000, 99.99th(us): 105000
+[2022/04/30 19:27:05.791 -05:00] [INFO] [client.go:754] ["[pd] stop fetching the pending tso requests due to context canceled"] [dc-location=global]
+[2022/04/30 19:27:05.792 -05:00] [INFO] [client.go:692] ["[pd] exit tso dispatcher"] [dc-location=global]

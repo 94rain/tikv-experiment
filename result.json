@@ -1,0 +1,264 @@
+{
+    "baseline": [
+        {
+            "thread": 1,
+            "throughput": 343.0,
+            "latency": 2228.1
+        },
+        {
+            "thread": 1,
+            "throughput": 343.0,
+            "latency": 2228.1
+        },
+        {
+            "thread": 1,
+            "throughput": 343.0,
+            "latency": 2228.1
+        },
+        {
+            "thread": 2,
+            "throughput": 405.0,
+            "latency": 3783.7
+        },
+        {
+            "thread": 2,
+            "throughput": 405.0,
+            "latency": 3783.7
+        },
+        {
+            "thread": 3,
+            "throughput": 508.0,
+            "latency": 4498.9
+        },
+        {
+            "thread": 3,
+            "throughput": 508.0,
+            "latency": 4498.9
+        },
+        {
+            "thread": 4,
+            "throughput": 656.0,
+            "latency": 4640.0
+        },
+        {
+            "thread": 4,
+            "throughput": 656.0,
+            "latency": 4640.0
+        },
+        {
+            "thread": 5,
+            "throughput": 763.0,
+            "latency": 4916.2
+        },
+        {
+            "thread": 5,
+            "throughput": 763.0,
+            "latency": 4916.2
+        },
+        {
+            "thread": 6,
+            "throughput": 1008.0,
+            "latency": 4461.5
+        },
+        {
+            "thread": 6,
+            "throughput": 1008.0,
+            "latency": 4461.5
+        },
+        {
+            "thread": 7,
+            "throughput": 1130.0,
+            "latency": 4674.5
+        },
+        {
+            "thread": 7,
+            "throughput": 1130.0,
+            "latency": 4674.5
+        },
+        {
+            "thread": 8,
+            "throughput": 1161.0,
+            "latency": 5191.3
+        },
+        {
+            "thread": 9,
+            "throughput": 1305.0,
+            "latency": 5220.0
+        },
+        {
+            "thread": 10,
+            "throughput": 1801.0,
+            "latency": 4158.9
+        },
+        {
+            "thread": 10,
+            "throughput": 1801.0,
+            "latency": 4158.9
+        },
+        {
+            "thread": 11,
+            "throughput": 1772.0,
+            "latency": 4677.1
+        },
+        {
+            "thread": 11,
+            "throughput": 1772.0,
+            "latency": 4677.1
+        },
+        {
+            "thread": 12,
+            "throughput": 1855.0,
+            "latency": 4898.9
+        },
+        {
+            "thread": 12,
+            "throughput": 1855.0,
+            "latency": 4898.9
+        },
+        {
+            "thread": 13,
+            "throughput": 2106.0,
+            "latency": 4690.1
+        },
+        {
+            "thread": 13,
+            "throughput": 2106.0,
+            "latency": 4690.1
+        },
+        {
+            "thread": 14,
+            "throughput": 2265.0,
+            "latency": 4655.7
+        },
+        {
+            "thread": 14,
+            "throughput": 2265.0,
+            "latency": 4655.7
+        },
+        {
+            "thread": 15,
+            "throughput": 2471.0,
+            "latency": 4631.2
+        },
+        {
+            "thread": 15,
+            "throughput": 2471.0,
+            "latency": 4631.2
+        },
+        {
+            "thread": 16,
+            "throughput": 2429.0,
+            "latency": 4969.8
+        },
+        {
+            "thread": 16,
+            "throughput": 2429.0,
+            "latency": 4969.8
+        },
+        {
+            "thread": 17,
+            "throughput": 2692.0,
+            "latency": 4770.2
+        },
+        {
+            "thread": 17,
+            "throughput": 2692.0,
+            "latency": 4770.2
+        },
+        {
+            "thread": 18,
+            "throughput": 2745.0,
+            "latency": 4975.8
+        },
+        {
+            "thread": 18,
+            "throughput": 2745.0,
+            "latency": 4975.8
+        },
+        {
+            "thread": 19,
+            "throughput": 2730.0,
+            "latency": 5215.3
+        },
+        {
+            "thread": 20,
+            "throughput": 2744.0,
+            "latency": 5495.0
+        },
+        {
+            "thread": 21,
+            "throughput": 4231.0,
+            "latency": 3684.3
+        },
+        {
+            "thread": 21,
+            "throughput": 4231.0,
+            "latency": 3684.3
+        },
+        {
+            "thread": 22,
+            "throughput": 3415.0,
+            "latency": 4888.0
+        },
+        {
+            "thread": 22,
+            "throughput": 3415.0,
+            "latency": 4888.0
+        },
+        {
+            "thread": 23,
+            "throughput": 3122.0,
+            "latency": 5526.1
+        },
+        {
+            "thread": 24,
+            "throughput": 3463.0,
+            "latency": 5318.8
+        },
+        {
+            "thread": 25,
+            "throughput": 3541.0,
+            "latency": 5265.6
+        },
+        {
+            "thread": 26,
+            "throughput": 4441.0,
+            "latency": 4444.2
+        },
+        {
+            "thread": 26,
+            "throughput": 4441.0,
+            "latency": 4444.2
+        },
+        {
+            "thread": 27,
+            "throughput": 3441.0,
+            "latency": 5889.7
+        },
+        {
+            "thread": 28,
+            "throughput": 3786.0,
+            "latency": 5592.3
+        },
+        {
+            "thread": 29,
+            "throughput": 3924.0,
+            "latency": 5533.1
+        },
+        {
+            "thread": 30,
+            "throughput": 3799.0,
+            "latency": 5837.6
+        },
+        {
+            "thread": 31,
+            "throughput": 4114.0,
+            "latency": 5604.0
+        },
+        {
+            "thread": 32,
+            "throughput": 3952.0,
+            "latency": 6037.5
+        }
+    ]
+}
