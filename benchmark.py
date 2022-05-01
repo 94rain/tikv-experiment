@@ -50,12 +50,7 @@ def find_leader():
         else:
             return find_leader()
 
-
-
-
     # find pid by port
-
-
     
 def slow_cpu(period, quota, pids):
     cgroup_name = "/sys/fs/cgroup/cpu/tikv"
@@ -110,7 +105,6 @@ def run_slow_cpu():
         sleep(10)
     
 def run_memory_contention():
-    period = 1000000
     quotas = [128, 256, 512]
 
     # follower memory contention
@@ -122,7 +116,7 @@ def run_memory_contention():
         follower_pids = all_pids
         follower_pid_to_slow = follower_pids[random.randint(0, 1)]
         memory_contention(period, quota, [follower_pid_to_slow])
-        os.system(f'./go-ycsb/bin/go-ycsb run tikv -P workload_mixed -p tikv.pd="127.0.0.1:2379" -p tikv.type="raw" -p threadcount={threads} | tee logs/memcontention_follower_{period}_{quota}')
+        os.system(f'./go-ycsb/bin/go-ycsb run tikv -P workload_mixed -p tikv.pd="127.0.0.1:2379" -p tikv.type="raw" -p threadcount={threads} | tee logs/memcontention_follower_{quota}')
         remove_fault_injection("memory")
         sleep(10)
 
@@ -131,7 +125,7 @@ def run_memory_contention():
         # needs re-lookup leader pid every time
         leader_pid = find_leader()
         slow_cpu(period, quota, [leader_pid])
-        os.system(f'./go-ycsb/bin/go-ycsb run tikv -P workload_mixed -p tikv.pd="127.0.0.1:2379" -p tikv.type="raw" -p threadcount={threads} | tee logs/memcontention_leader_{period}_{quota}')
+        os.system(f'./go-ycsb/bin/go-ycsb run tikv -P workload_mixed -p tikv.pd="127.0.0.1:2379" -p tikv.type="raw" -p threadcount={threads} | tee logs/memcontention_leader_{quota}')
         remove_fault_injection("memory")
         sleep(10)
 
@@ -152,31 +146,19 @@ def run_crash_node():
 
 
 if __name__ == "__main__":
-    # tikv_pids = get_pids()
-    tikv_pids = ["2247","2253","2254"]
+    tikv_pids = get_pids()
     # find_leader()
     # run baseline
-    # run_baseline()
+    run_baseline()
 
-    # # run slow cpu
-    # run_slow_cpu()
+    # # run crash node
+    # run_crash_node()
 
-    period = 1000000
-    quotas = [50000, 100000, 200000]
+    # run slow cpu
+    run_slow_cpu()
 
-    # follower memory contention
-    remove_fault_injection("cpu")
-    for quota in quotas:
-        # needs re-lookup leader pid every time
-        slow_cpu(period, quota, [6134])
-        os.system(f'./go-ycsb/bin/go-ycsb run tikv -P workload_mixed -p tikv.pd="127.0.0.1:2379" -p tikv.type="raw" -p threadcount={threads} | tee logs/slowcpu_follower_{period}_{quota}')
-        remove_fault_injection("cpu")
+    run_memory_contention()
 
-    # leader slow cpu
-    for quota in quotas:
-        # needs re-lookup leader pid every time
-        slow_cpu(period, quota, [6136])
-        os.system(f'./go-ycsb/bin/go-ycsb run tikv -P workload_mixed -p tikv.pd="127.0.0.1:2379" -p tikv.type="raw" -p threadcount={threads} | tee logs/slowcpu_leader_{period}_{quota}')
-        remove_fault_injection("cpu")
+    
 
     os.system("rm *.tmp")
