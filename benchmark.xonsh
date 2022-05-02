@@ -5,22 +5,22 @@ from time import sleep
 
 threads = 26
 node_num = 3
-experiment_folder = "T4Y0TYz" # random generated string by tiup, check ~/.tiup/data/
+experiment_folder = "T4cm2Wk" # random generated string by tiup, check ~/.tiup/data/
 
 def restart():
-    os.system("tiup clean --all")
-    os.system("tiup playground --pd 1 --kv 3 --without-monitor")
+    tiup clean --all
+    tiup playground --pd 1 --kv 3
     sleep(10)
 
 def get_pids():
-    os.system("tiup playground display | grep tikv | awk '{print $1}' > pids.tmp")
+    tiup playground display | grep tikv | awk '{print $1}' > pids.tmp
     with open("pids.tmp", "r") as f:
         pids = f.read().splitlines()
     return pids
 
 def kill_pid(pids):
     for pid in pids:
-        os.system("kill -9 " + pid)
+        kill -9 @(pid)
 
 def find_leader():
     last_leader_node = -1
@@ -45,8 +45,8 @@ def find_leader():
     os.system(f"lsof -t -i:{last_leader_port} > leader_pid.tmp")
     with open("leader_pid.tmp", "r") as f:
         lines = f.read().splitlines()
-        if len(lines) > 0 and lines[0] > 0:
-            return lines[-1]
+        if len(lines) > 0 and int(lines[0]) > 0:
+            return lines[0]
         else:
             return find_leader()
 
@@ -105,27 +105,27 @@ def run_slow_cpu():
         sleep(10)
     
 def run_memory_contention():
-    quotas = [128, 256, 512]
+    quotas = [256, 224, 192, 160]
 
-    # follower memory contention
-    for quota in quotas:
-        # needs re-lookup leader pid every time
-        leader_pid = find_leader()
-        all_pids = get_pids()
-        all_pids.remove(leader_pid)
-        follower_pids = all_pids
-        follower_pid_to_slow = follower_pids[random.randint(0, 1)]
-        memory_contention(period, quota, [follower_pid_to_slow])
-        os.system(f'./go-ycsb/bin/go-ycsb run tikv -P workload_mixed -p tikv.pd="127.0.0.1:2379" -p tikv.type="raw" -p threadcount={threads} | tee logs/memcontention_follower_{quota}')
-        remove_fault_injection("memory")
-        sleep(10)
+#    # follower memory contention
+#    for quota in quotas:
+#        # needs re-lookup leader pid every time
+#        leader_pid = find_leader()
+#        all_pids = get_pids()
+#        all_pids.remove(leader_pid)
+#        follower_pids = all_pids
+#        follower_pid_to_slow = follower_pids[random.randint(0, 1)]
+#        memory_contention(quota, [follower_pid_to_slow])
+#        os.system(f'timeout 2m ./go-ycsb/bin/go-ycsb run tikv -P workload_mixed -p tikv.pd="127.0.0.1:2379" -p tikv.type="raw" -p threadcount={threads} | tee logs/memcontention_follower_{quota}')
+#        remove_fault_injection("memory")
+#        sleep(10)
 
     # leader memory contention
     for quota in quotas:
         # needs re-lookup leader pid every time
         leader_pid = find_leader()
-        slow_cpu(period, quota, [leader_pid])
-        os.system(f'./go-ycsb/bin/go-ycsb run tikv -P workload_mixed -p tikv.pd="127.0.0.1:2379" -p tikv.type="raw" -p threadcount={threads} | tee logs/memcontention_leader_{quota}')
+        memory_contention(quota, [leader_pid])
+        os.system(f'timeout 2m ./go-ycsb/bin/go-ycsb run tikv -P workload_mixed -p tikv.pd="127.0.0.1:2379" -p tikv.type="raw" -p threadcount={threads} | tee logs/memcontention_leader_{quota}')
         remove_fault_injection("memory")
         sleep(10)
 
@@ -135,30 +135,34 @@ def run_crash_node():
     follower_pids = get_pids().remove(leader_pid)
     follower_pid_to_kill = follower_pids[random.randint(0, 1)]
     kill_pid([follower_pid_to_kill])
-    os.system(f'./go-ycsb/bin/go-ycsb run tikv -P workload_mixed -p tikv.pd="127.0.0.1:2379" -p tikv.type="raw" -p threadcount={threads} | tee logs/crash_follower')
+    os.system(f'timeout 2m ./go-ycsb/bin/go-ycsb run tikv -P workload_mixed -p tikv.pd="127.0.0.1:2379" -p tikv.type="raw" -p threadcount={threads} | tee logs/crash_follower')
     restart()
     # kill leader
     leader_pid = find_leader()
     kill_pid([leader_pid])
-    os.system(f'./go-ycsb/bin/go-ycsb run tikv -P workload_mixed -p tikv.pd="127.0.0.1:2379" -p tikv.type="raw" -p threadcount={threads} | tee logs/crash_leader')
+    os.system(f'timeout 2m ./go-ycsb/bin/go-ycsb run tikv -P workload_mixed -p tikv.pd="127.0.0.1:2379" -p tikv.type="raw" -p threadcount={threads} | tee logs/crash_leader')
     restart()
 
 
-
 if __name__ == "__main__":
+    # restart()
+    ls ~/.tiup/data > log_path.tmp
+    with open("log_path.tmp", "r") as f:
+        experiment_folder = f.read().splitlines()[0]
+
     tikv_pids = get_pids()
     # find_leader()
     # run baseline
-    run_baseline()
+#    run_baseline()
 
     # # run crash node
     # run_crash_node()
 
     # run slow cpu
-    run_slow_cpu()
-
+    # run_slow_cpu()
+    remove_fault_injection("memory")
     run_memory_contention()
 
     
 
-    os.system("rm *.tmp")
+    rm *.tmp
