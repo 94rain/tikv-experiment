@@ -117,6 +117,8 @@ def plot_fault():
     # axs[0, 0].get_figure().savefig('assets/fault.png')
     axs[0, 0].get_figure().savefig('assets/crash.png')
 
-# plot_baseline()
-plot_fault()
+
+if __name__ == "__main__":
+    # plot_baseline()
+    plot_fault()
 

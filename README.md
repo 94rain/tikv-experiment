@@ -10,7 +10,8 @@
     cd go-ycsb
     make
     ```
-4. run `benchmark.xonsh` (comment out parts of main to run some tests seperately)
+4. Run `benchmark.xsh` (comment out parts of main to run some tests seperately)
+5. Run `log_to_json.py` for parsing the logs and `graph.py` for drawing graphs.
 <!--
 ## References
 * https://github.com/pingcap/tiup/blob/master/doc/user/overview.md

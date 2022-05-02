@@ -152,18 +152,20 @@ if __name__ == "__main__":
         experiment_folder = f.read().splitlines()[0]
 
     tikv_pids = get_pids()
-#    # find_leader()
-#    # run baseline
-#    run_baseline()
-#
-#    # run crash node
-#    run_crash_node()
-#
-#    # run slow cpu
-#    remove_fault_injection("cpu")
-#    #run_slow_cpu()
-#
 
+    # find_leader()
+
+    # run baseline
+    run_baseline()
+
+    # run crash node
+    run_crash_node()
+
+    # run slow cpu
+    remove_fault_injection("cpu")
+    run_slow_cpu()
+
+    # run memory contention
     remove_fault_injection("memory")
     run_memory_contention()
 
