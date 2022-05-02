@@ -43,7 +43,7 @@ def plot_baseline():
     for x, y, thread in zip(xs, ys, threads):
         plt.annotate(thread, xy=(x, y))
 
-    plt.xlabel("Throughput (ops/sec)")
+    plt.xlabel("Throughput (ops/sec)\n Figure 1")
     plt.ylabel("Average Latency (us)")
     plt.title("Baseline performance for 1-32 threads (100K operations)")
     plt.savefig("assets/baseline.png")
@@ -52,7 +52,7 @@ def plot_baseline():
 initial_fault_plot = ["128", "256", "512", "50000", "100000", "200000"]
 
 def plot_fault():
-    plt.rcParams["figure.figsize"] = (16, 16)
+    plt.rcParams["figure.figsize"] = (12, 12)
     fig, axs = plt.subplots(2, 2)
     
     '''
