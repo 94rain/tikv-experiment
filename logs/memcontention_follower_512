@@ -1,28 +1,28 @@
-[2022/05/01 17:56:37.703 -05:00] [INFO] [client.go:378] ["[pd] create pd client with endpoints"] [pd-address="[127.0.0.1:2379]"]
-[2022/05/01 17:56:37.710 -05:00] [INFO] [base_client.go:350] ["[pd] switch leader"] [new-leader=http://127.0.0.1:2379] [old-leader=]
-[2022/05/01 17:56:37.710 -05:00] [INFO] [base_client.go:105] ["[pd] init cluster id"] [cluster-id=7092903812443442071]
-[2022/05/01 17:56:37.710 -05:00] [INFO] [client.go:673] ["[pd] tso dispatcher created"] [dc-location=global]
+[2022/05/01 22:01:12.024 -05:00] [INFO] [client.go:378] ["[pd] create pd client with endpoints"] [pd-address="[127.0.0.1:2379]"]
+[2022/05/01 22:01:12.032 -05:00] [INFO] [base_client.go:350] ["[pd] switch leader"] [new-leader=http://127.0.0.1:2379] [old-leader=]
+[2022/05/01 22:01:12.032 -05:00] [INFO] [base_client.go:105] ["[pd] init cluster id"] [cluster-id=7092968581717247554]
+[2022/05/01 22:01:12.034 -05:00] [INFO] [client.go:673] ["[pd] tso dispatcher created"] [dc-location=global]
 ***************** properties *****************
-"requestdistribution"="uniform"
-"recordcount"="10000"
-"dotransactions"="true"
-"scanproportion"="0"
-"workload"="core"
-"operationcount"="100000"
-"readproportion"="0.5"
-"insertproportion"="0"
 "tikv.pd"="127.0.0.1:2379"
-"tikv.type"="raw"
-"threadcount"="26"
 "readallfields"="true"
+"readproportion"="0.5"
+"tikv.type"="raw"
+"dotransactions"="true"
+"workload"="core"
 "updateproportion"="0.5"
+"requestdistribution"="uniform"
+"insertproportion"="0"
+"operationcount"="100000"
+"threadcount"="26"
+"recordcount"="10000"
+"scanproportion"="0"
 **********************************************
-READ   - Takes(s): 9.8, Count: 14962, OPS: 1529.9, Avg(us): 610, Min(us): 124, Max(us): 224208, 99th(us): 2000, 99.9th(us): 6000, 99.99th(us): 225000
-UPDATE - Takes(s): 9.8, Count: 14974, OPS: 1535.4, Avg(us): 16719, Min(us): 3191, Max(us): 948232, 99th(us): 300000, 99.9th(us): 893000, 99.99th(us): 949000
-READ   - Takes(s): 19.8, Count: 38825, OPS: 1962.8, Avg(us): 506, Min(us): 124, Max(us): 224208, 99th(us): 2000, 99.9th(us): 5000, 99.99th(us): 224000
-UPDATE - Takes(s): 19.8, Count: 38808, OPS: 1964.7, Avg(us): 12870, Min(us): 3191, Max(us): 948232, 99th(us): 182000, 99.9th(us): 843000, 99.99th(us): 948000
-Run finished, takes 24.3690272s
-READ   - Takes(s): 24.1, Count: 49990, OPS: 2070.4, Avg(us): 491, Min(us): 124, Max(us): 224208, 99th(us): 2000, 99.9th(us): 5000, 99.99th(us): 224000
-UPDATE - Takes(s): 24.1, Count: 50005, OPS: 2073.4, Avg(us): 12010, Min(us): 2709, Max(us): 948232, 99th(us): 144000, 99.9th(us): 836000, 99.99th(us): 947000
-[2022/05/01 17:57:02.080 -05:00] [INFO] [client.go:754] ["[pd] stop fetching the pending tso requests due to context canceled"] [dc-location=global]
-[2022/05/01 17:57:02.080 -05:00] [INFO] [client.go:692] ["[pd] exit tso dispatcher"] [dc-location=global]
+READ   - Takes(s): 9.9, Count: 18270, OPS: 1850.8, Avg(us): 547, Min(us): 124, Max(us): 129580, 99th(us): 2000, 99.9th(us): 6000, 99.99th(us): 130000
+UPDATE - Takes(s): 9.9, Count: 18027, OPS: 1828.0, Avg(us): 13832, Min(us): 3204, Max(us): 1240930, 99th(us): 250000, 99.9th(us): 1240000, 99.99th(us): 1241000
+READ   - Takes(s): 19.9, Count: 39240, OPS: 1974.7, Avg(us): 478, Min(us): 124, Max(us): 129580, 99th(us): 2000, 99.9th(us): 5000, 99.99th(us): 130000
+UPDATE - Takes(s): 19.9, Count: 38881, OPS: 1957.6, Avg(us): 12852, Min(us): 3204, Max(us): 1240930, 99th(us): 247000, 99.9th(us): 584000, 99.99th(us): 1241000
+Run finished, takes 26.1614153s
+READ   - Takes(s): 26.0, Count: 50231, OPS: 1929.6, Avg(us): 452, Min(us): 124, Max(us): 129580, 99th(us): 2000, 99.9th(us): 3000, 99.99th(us): 130000
+UPDATE - Takes(s): 26.0, Count: 49763, OPS: 1912.3, Avg(us): 13018, Min(us): 2573, Max(us): 1240930, 99th(us): 224000, 99.9th(us): 582000, 99.99th(us): 1241000
+[2022/05/01 22:01:38.197 -05:00] [INFO] [client.go:754] ["[pd] stop fetching the pending tso requests due to context canceled"] [dc-location=global]
+[2022/05/01 22:01:38.197 -05:00] [INFO] [client.go:692] ["[pd] exit tso dispatcher"] [dc-location=global]

@@ -1,16 +1,16 @@
 {
     "memcontention_follower_512": [
         {
-            "throughput": 1535.4,
-            "latency": 16719.0
+            "throughput": 1828.0,
+            "latency": 13832.0
         },
         {
-            "throughput": 1964.7,
-            "latency": 12870.0
+            "throughput": 1957.6,
+            "latency": 12852.0
         },
         {
-            "throughput": 2073.4,
-            "latency": 12010.0
+            "throughput": 1912.3,
+            "latency": 13018.0
         }
     ],
     "baseline": [
@@ -175,36 +175,136 @@
             "thread": 32
         }
     ],
-    "memcontention_leader_256": [
+    "memcontention_leader_512": [
         {
-            "throughput": 0.0,
-            "latency": 0.0
+            "throughput": 1383.8,
+            "latency": 18401.0
         },
         {
-            "throughput": 1282.8,
-            "latency": 19532.0
+            "throughput": 634.1,
+            "latency": 18832.0
         },
         {
-            "throughput": 1606.9,
-            "latency": 15334.0
+            "throughput": 448.9,
+            "latency": 27293.0
         },
         {
-            "throughput": 1647.0,
-            "latency": 14962.0
+            "throughput": 553.8,
+            "latency": 46610.0
         },
         {
-            "throughput": 1638.2,
-            "latency": 14834.0
+            "throughput": 863.7,
+            "latency": 29734.0
+        },
+        {
+            "throughput": 923.9,
+            "latency": 27561.0
+        }
+    ],
+    "slowcpu_follower_80000": [
+        {
+            "throughput": 158.6,
+            "latency": 99579.0
+        },
+        {
+            "throughput": 173.6,
+            "latency": 114288.0
+        },
+        {
+            "throughput": 196.7,
+            "latency": 98752.0
+        },
+        {
+            "throughput": 190.7,
+            "latency": 104321.0
+        },
+        {
+            "throughput": 197.4,
+            "latency": 100052.0
+        },
+        {
+            "throughput": 209.6,
+            "latency": 94016.0
+        },
+        {
+            "throughput": 216.0,
+            "latency": 90948.0
+        },
+        {
+            "throughput": 219.7,
+            "latency": 89547.0
+        },
+        {
+            "throughput": 221.4,
+            "latency": 89264.0
+        },
+        {
+            "throughput": 223.7,
+            "latency": 87904.0
+        },
+        {
+            "throughput": 226.0,
+            "latency": 86778.0
+        },
+        {
+            "throughput": 229.1,
+            "latency": 85412.0
+        },
+        {
+            "throughput": 232.7,
+            "latency": 83732.0
+        },
+        {
+            "throughput": 235.3,
+            "latency": 82489.0
+        },
+        {
+            "throughput": 238.2,
+            "latency": 81215.0
+        },
+        {
+            "throughput": 240.6,
+            "latency": 80148.0
+        },
+        {
+            "throughput": 242.9,
+            "latency": 79212.0
+        },
+        {
+            "throughput": 245.0,
+            "latency": 78587.0
+        },
+        {
+            "throughput": 246.8,
+            "latency": 77908.0
+        },
+        {
+            "throughput": 247.6,
+            "latency": 77422.0
+        },
+        {
+            "throughput": 247.0,
+            "latency": 77295.0
+        }
+    ],
+    "slowcpu_follower_90000": [
+        {
+            "throughput": 3941.9,
+            "latency": 6299.0
+        },
+        {
+            "throughput": 2500.7,
+            "latency": 9794.0
+        },
+        {
+            "throughput": 1978.0,
+            "latency": 10921.0
         }
     ],
     "memcontention_leader_160": [
         {
-            "throughput": 863.9,
-            "latency": 29934.0
-        },
-        {
-            "throughput": 974.0,
-            "latency": 26338.0
+            "throughput": 0.0,
+            "latency": 0.0
         }
     ],
     "slowcpu_follower_100000": [
@@ -237,68 +337,20 @@
     ],
     "memcontention_follower_128": [
         {
-            "throughput": 1.5,
-            "latency": 2990187.0
+            "throughput": 1639.4,
+            "latency": 15577.0
         },
         {
-            "throughput": 0.4,
-            "latency": 2990187.0
+            "throughput": 1553.6,
+            "latency": 16391.0
         },
         {
-            "throughput": 0.2,
-            "latency": 2990187.0
+            "throughput": 1536.2,
+            "latency": 16560.0
         },
         {
-            "throughput": 0.2,
-            "latency": 2990187.0
-        },
-        {
-            "throughput": 0.1,
-            "latency": 2990187.0
-        },
-        {
-            "throughput": 0.1,
-            "latency": 2990187.0
-        },
-        {
-            "throughput": 0.1,
-            "latency": 2990187.0
-        },
-        {
-            "throughput": 0.1,
-            "latency": 2990187.0
-        },
-        {
-            "throughput": 0.1,
-            "latency": 2990187.0
-        },
-        {
-            "throughput": 0.1,
-            "latency": 2990187.0
-        },
-        {
-            "throughput": 0.1,
-            "latency": 2990187.0
-        },
-        {
-            "throughput": 0.1,
-            "latency": 2990187.0
-        },
-        {
-            "throughput": 0.0,
-            "latency": 2990187.0
-        },
-        {
-            "throughput": 0.0,
-            "latency": 2990187.0
-        },
-        {
-            "throughput": 0.0,
-            "latency": 2990187.0
-        },
-        {
-            "throughput": 0.0,
-            "latency": 2990187.0
+            "throughput": 1515.9,
+            "latency": 16445.0
         }
     ],
     "crash_leader": [
@@ -327,16 +379,6 @@
         {
             "throughput": 2156.4,
             "latency": 11478.0
-        }
-    ],
-    "memcontention_leader_224": [
-        {
-            "throughput": 3494.2,
-            "latency": 6949.0
-        },
-        {
-            "throughput": 2995.9,
-            "latency": 7946.0
         }
     ],
     "slowcpu_leader_50000": [
@@ -591,52 +633,164 @@
     ],
     "memcontention_follower_192": [
         {
-            "throughput": 1181.1,
-            "latency": 21471.0
+            "throughput": 2116.4,
+            "latency": 12007.0
         },
         {
-            "throughput": 1836.9,
-            "latency": 13703.0
+            "throughput": 1846.4,
+            "latency": 13756.0
         },
         {
-            "throughput": 1920.9,
-            "latency": 12899.0
+            "throughput": 1837.4,
+            "latency": 13573.0
+        }
+    ],
+    "slowcpu_leader_90000": [
+        {
+            "throughput": 2527.4,
+            "latency": 9900.0
+        },
+        {
+            "throughput": 2436.2,
+            "latency": 10226.0
+        },
+        {
+            "throughput": 2407.2,
+            "latency": 10172.0
+        }
+    ],
+    "slowcpu_follower_70000": [
+        {
+            "throughput": 204.3,
+            "latency": 91432.0
+        },
+        {
+            "throughput": 202.3,
+            "latency": 94113.0
+        },
+        {
+            "throughput": 203.6,
+            "latency": 94187.0
+        },
+        {
+            "throughput": 199.1,
+            "latency": 96265.0
+        },
+        {
+            "throughput": 195.6,
+            "latency": 100810.0
+        },
+        {
+            "throughput": 197.6,
+            "latency": 99867.0
+        },
+        {
+            "throughput": 198.6,
+            "latency": 99668.0
+        },
+        {
+            "throughput": 198.0,
+            "latency": 100299.0
+        },
+        {
+            "throughput": 193.9,
+            "latency": 102911.0
+        },
+        {
+            "throughput": 195.0,
+            "latency": 101730.0
+        },
+        {
+            "throughput": 196.1,
+            "latency": 101998.0
+        },
+        {
+            "throughput": 196.8,
+            "latency": 101573.0
+        },
+        {
+            "throughput": 195.1,
+            "latency": 102385.0
+        },
+        {
+            "throughput": 193.5,
+            "latency": 103281.0
+        },
+        {
+            "throughput": 191.0,
+            "latency": 104789.0
+        },
+        {
+            "throughput": 190.1,
+            "latency": 105407.0
+        },
+        {
+            "throughput": 189.7,
+            "latency": 105523.0
+        },
+        {
+            "throughput": 191.2,
+            "latency": 104648.0
+        },
+        {
+            "throughput": 190.6,
+            "latency": 105090.0
+        },
+        {
+            "throughput": 190.1,
+            "latency": 105425.0
+        },
+        {
+            "throughput": 189.2,
+            "latency": 105669.0
+        },
+        {
+            "throughput": 189.5,
+            "latency": 105532.0
+        },
+        {
+            "throughput": 188.7,
+            "latency": 105953.0
+        },
+        {
+            "throughput": 189.8,
+            "latency": 105660.0
+        },
+        {
+            "throughput": 190.6,
+            "latency": 105318.0
+        },
+        {
+            "throughput": 191.3,
+            "latency": 104703.0
+        },
+        {
+            "throughput": 190.6,
+            "latency": 104120.0
         }
     ],
     "memcontention_follower_224": [
         {
-            "throughput": 916.6,
-            "latency": 27597.0
+            "throughput": 3035.1,
+            "latency": 8179.0
         },
         {
-            "throughput": 1194.3,
-            "latency": 21100.0
-        },
-        {
-            "throughput": 1161.9,
-            "latency": 21912.0
-        },
-        {
-            "throughput": 1166.7,
-            "latency": 21487.0
-        },
-        {
-            "throughput": 1056.6,
-            "latency": 23612.0
+            "throughput": 2640.3,
+            "latency": 9271.0
         }
     ],
     "memcontention_follower_256": [
         {
-            "throughput": 2026.3,
-            "latency": 12303.0
+            "throughput": 1737.9,
+            "latency": 14636.0
         },
         {
-            "throughput": 2467.9,
-            "latency": 10037.0
+            "throughput": 1915.2,
+            "latency": 13215.0
         },
         {
-            "throughput": 2397.3,
-            "latency": 10101.0
+            "throughput": 1923.3,
+            "latency": 12720.0
         }
     ],
     "slowcpu_leader_100000": [
@@ -761,15 +915,125 @@
     ],
     "memcontention_leader_128": [
         {
-            "throughput": 863.9,
-            "latency": 29934.0
-        },
-        {
-            "throughput": 974.0,
-            "latency": 26338.0
+            "throughput": 0.0,
+            "latency": 0.0
         }
     ],
     "memcontention_leader_192": [
+        {
+            "throughput": 0.0,
+            "latency": 0.0
+        }
+    ],
+    "slowcpu_leader_60000": [
+        {
+            "throughput": 145.5,
+            "latency": 124930.0
+        },
+        {
+            "throughput": 140.6,
+            "latency": 133903.0
+        },
+        {
+            "throughput": 137.7,
+            "latency": 136255.0
+        },
+        {
+            "throughput": 134.6,
+            "latency": 145123.0
+        },
+        {
+            "throughput": 138.5,
+            "latency": 141642.0
+        },
+        {
+            "throughput": 138.3,
+            "latency": 143531.0
+        },
+        {
+            "throughput": 139.4,
+            "latency": 143514.0
+        },
+        {
+            "throughput": 142.7,
+            "latency": 140798.0
+        },
+        {
+            "throughput": 143.6,
+            "latency": 139662.0
+        },
+        {
+            "throughput": 144.4,
+            "latency": 138535.0
+        },
+        {
+            "throughput": 145.9,
+            "latency": 136939.0
+        },
+        {
+            "throughput": 147.5,
+            "latency": 136024.0
+        },
+        {
+            "throughput": 148.5,
+            "latency": 135055.0
+        }
+    ],
+    "slowcpu_follower_60000": [
+        {
+            "throughput": 193.3,
+            "latency": 93567.0
+        },
+        {
+            "throughput": 152.4,
+            "latency": 96558.0
+        },
+        {
+            "throughput": 156.9,
+            "latency": 128401.0
+        },
+        {
+            "throughput": 165.3,
+            "latency": 118762.0
+        },
+        {
+            "throughput": 171.0,
+            "latency": 114202.0
+        },
+        {
+            "throughput": 173.8,
+            "latency": 109994.0
+        },
+        {
+            "throughput": 174.0,
+            "latency": 109995.0
+        },
+        {
+            "throughput": 172.5,
+            "latency": 111560.0
+        },
+        {
+            "throughput": 173.0,
+            "latency": 111445.0
+        },
+        {
+            "throughput": 175.3,
+            "latency": 109194.0
+        },
+        {
+            "throughput": 176.9,
+            "latency": 109038.0
+        },
+        {
+            "throughput": 178.2,
+            "latency": 108299.0
+        },
+        {
+            "throughput": 179.5,
+            "latency": 107709.0
+        }
+    ],
+    "memcontention_leader_256": [
         {
             "throughput": 0.0,
             "latency": 0.0
@@ -789,22 +1053,134 @@
             "latency": 10168.0
         }
     ],
-    "memcontention_leader_512": [
+    "slowcpu_leader_80000": [
         {
-            "throughput": 2721.9,
-            "latency": 9096.0
+            "throughput": 86.9,
+            "latency": 271155.0
         },
         {
-            "throughput": 1959.1,
-            "latency": 12792.0
+            "throughput": 98.4,
+            "latency": 246333.0
         },
         {
-            "throughput": 1551.2,
-            "latency": 16226.0
+            "throughput": 104.1,
+            "latency": 234385.0
         },
         {
-            "throughput": 1464.9,
-            "latency": 16958.0
+            "throughput": 107.4,
+            "latency": 227562.0
+        },
+        {
+            "throughput": 106.8,
+            "latency": 225914.0
+        },
+        {
+            "throughput": 105.2,
+            "latency": 227810.0
+        },
+        {
+            "throughput": 107.2,
+            "latency": 225392.0
+        },
+        {
+            "throughput": 108.9,
+            "latency": 221388.0
+        },
+        {
+            "throughput": 110.9,
+            "latency": 217476.0
+        },
+        {
+            "throughput": 111.6,
+            "latency": 215918.0
+        },
+        {
+            "throughput": 113.6,
+            "latency": 212169.0
+        },
+        {
+            "throughput": 115.3,
+            "latency": 209476.0
+        },
+        {
+            "throughput": 116.6,
+            "latency": 206810.0
+        },
+        {
+            "throughput": 117.2,
+            "latency": 205277.0
+        },
+        {
+            "throughput": 117.3,
+            "latency": 204558.0
+        },
+        {
+            "throughput": 117.9,
+            "latency": 203487.0
+        },
+        {
+            "throughput": 118.8,
+            "latency": 201474.0
+        },
+        {
+            "throughput": 118.5,
+            "latency": 202124.0
+        },
+        {
+            "throughput": 122.5,
+            "latency": 193649.0
+        },
+        {
+            "throughput": 126.4,
+            "latency": 186061.0
+        },
+        {
+            "throughput": 129.8,
+            "latency": 179976.0
+        },
+        {
+            "throughput": 133.7,
+            "latency": 173603.0
+        },
+        {
+            "throughput": 138.0,
+            "latency": 166752.0
+        },
+        {
+            "throughput": 142.0,
+            "latency": 160711.0
+        },
+        {
+            "throughput": 144.9,
+            "latency": 156671.0
+        },
+        {
+            "throughput": 147.3,
+            "latency": 153799.0
+        },
+        {
+            "throughput": 149.1,
+            "latency": 151193.0
+        },
+        {
+            "throughput": 151.6,
+            "latency": 147904.0
+        },
+        {
+            "throughput": 153.6,
+            "latency": 145415.0
+        },
+        {
+            "throughput": 154.5,
+            "latency": 143940.0
+        },
+        {
+            "throughput": 156.4,
+            "latency": 141773.0
+        },
+        {
+            "throughput": 157.6,
+            "latency": 138920.0
         }
     ],
     "slowcpu_leader_200000": [
@@ -849,6 +1225,16 @@
             "latency": 39079.0
         }
     ],
+    "slowcpu_leader_70000": [
+        {
+            "throughput": 2826.3,
+            "latency": 8899.0
+        },
+        {
+            "throughput": 2728.7,
+            "latency": 8891.0
+        }
+    ],
     "memcontention_follower_160": [
         {
             "throughput": 2267.9,
@@ -861,6 +1247,20 @@
         {
             "throughput": 1982.2,
             "latency": 12413.0
+        }
+    ],
+    "memcontention_leader_224": [
+        {
+            "throughput": 2786.8,
+            "latency": 8999.0
+        },
+        {
+            "throughput": 2285.9,
+            "latency": 11021.0
+        },
+        {
+            "throughput": 2172.6,
+            "latency": 11261.0
         }
     ]
 }

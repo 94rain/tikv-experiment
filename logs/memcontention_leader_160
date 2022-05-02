@@ -1,0 +1,21 @@
+[2022/05/01 22:11:53.273 -05:00] [INFO] [client.go:378] ["[pd] create pd client with endpoints"] [pd-address="[127.0.0.1:2379]"]
+[2022/05/01 22:11:53.275 -05:00] [INFO] [base_client.go:350] ["[pd] switch leader"] [new-leader=http://127.0.0.1:2379] [old-leader=]
+[2022/05/01 22:11:53.275 -05:00] [INFO] [base_client.go:105] ["[pd] init cluster id"] [cluster-id=7092971029539662299]
+[2022/05/01 22:11:53.275 -05:00] [INFO] [client.go:673] ["[pd] tso dispatcher created"] [dc-location=global]
+***************** properties *****************
+"readproportion"="0.5"
+"recordcount"="10000"
+"tikv.type"="raw"
+"dotransactions"="true"
+"readallfields"="true"
+"updateproportion"="0.5"
+"tikv.pd"="127.0.0.1:2379"
+"requestdistribution"="uniform"
+"operationcount"="100000"
+"workload"="core"
+"scanproportion"="0"
+"insertproportion"="0"
+"threadcount"="26"
+**********************************************
+[2022/05/01 22:11:53.431 -05:00] [INFO] [client_batch.go:609] ["batchRecvLoop fails when receiving, needs to reconnect"] [target=127.0.0.1:20162] [forwardedHost=] [error="rpc error: code = Unavailable desc = error reading from server: read tcp 127.0.0.1:43842->127.0.0.1:20162: read: connection reset by peer"]
+[2022/05/01 22:11:53.432 -05:00] [INFO] [region_request.go:785] ["mark store's regions need be refill"] [id=1] [addr=127.0.0.1:20162] [error="rpc error: code = Unavailable desc = error reading from server: read tcp 127.0.0.1:43842->127.0.0.1:20162: read: connection reset by peer"] [errorVerbose="rpc error: code = Unavailable desc = error reading from server: read tcp 127.0.0.1:43842->127.0.0.1:20162: read: connection reset by peer\ngithub.com/tikv/client-go/v2/internal/client.sendBatchRequest\n\t/home/jsy/go/pkg/mod/github.com/tikv/client-go/v2@v2.0.0-rc.0.20220222033436-79b962a84d18/internal/client/client_batch.go:789\ngithub.com/tikv/client-go/v2/internal/client.(*RPCClient).SendRequest\n\t/home/jsy/go/pkg/mod/github.com/tikv/client-go/v2@v2.0.0-rc.0.20220222033436-79b962a84d18/internal/client/client.go:405\ngithub.com/tikv/client-go/v2/internal/locate.(*RegionRequestSender).sendReqToRegion\n\t/home/jsy/go/pkg/mod/github.com/tikv/client-go/v2@v2.0.0-rc.0.20220222033436-79b962a84d18/internal/locate/region_request.go:1130\ngithub.com/tikv/client-go/v2/internal/locate.(*RegionRequestSender).SendReqCtx\n\t/home/jsy/go/pkg/mod/github.com/tikv/client-go/v2@v2.0.0-rc.0.20220222033436-79b962a84d18/internal/locate/region_request.go:982\ngithub.com/tikv/client-go/v2/internal/locate.(*RegionRequestSender).SendReq\n\t/home/jsy/go/pkg/mod/github.com/tikv/client-go/v2@v2.0.0-rc.0.20220222033436-79b962a84d18/internal/locate/region_request.go:231\ngithub.com/tikv/client-go/v2/rawkv.(*Client).sendReq\n\t/home/jsy/go/pkg/mod/github.com/tikv/client-go/v2@v2.0.0-rc.0.20220222033436-79b962a84d18/rawkv/rawkv.go:547\ngithub.com/tikv/client-go/v2/rawkv.(*Client).Get\n\t/home/jsy/go/pkg/mod/github.com/tikv/client-go/v2@v2.0.0-rc.0.20220222033436-79b962a84d18/rawkv/rawkv.go:165\ngithub.com/pingcap/go-ycsb/db/tikv.(*rawDB).Update\n\t/home/jsy/tikv-experiment/go-ycsb/db/tikv/raw.go:126\ngithub.com/pingcap/go-ycsb/pkg/client.DbWrapper.Update\n\t/home/jsy/tikv-experiment/go-ycsb/pkg/client/dbwrapper.go:99\ngithub.com/pingcap/go-ycsb/pkg/workload.(*core).doTransactionUpdate\n\t/home/jsy/tikv-experiment/go-ycsb/pkg/workload/core.go:561\ngithub.com/pingcap/go-ycsb/pkg/workload.(*core).DoTransaction\n\t/home/jsy/tikv-experiment/go-ycsb/pkg/workload/core.go:399\ngithub.com/pingcap/go-ycsb/pkg/client.(*worker).run\n\t/home/jsy/tikv-experiment/go-ycsb/pkg/client/client.go:126\ngithub.com/pingcap/go-ycsb/pkg/client.(*Client).Run.func2\n\t/home/jsy/tikv-experiment/go-ycsb/pkg/client/client.go:217\nruntime.goexit\n\t/usr/local/go/src/runtime/asm_amd64.s:1571"]

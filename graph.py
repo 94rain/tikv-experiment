@@ -21,9 +21,17 @@ fault_types = [
     "memcontention_leader_256",
     "memcontention_leader_512",
     "slowcpu_follower_50000",
+    "slowcpu_follower_60000",
+    "slowcpu_follower_70000",
+    "slowcpu_follower_80000",
+    "slowcpu_follower_90000",
     "slowcpu_follower_100000",
     "slowcpu_follower_200000",
     "slowcpu_leader_50000",
+    "slowcpu_leader_60000",
+    "slowcpu_leader_70000",
+    "slowcpu_leader_80000",
+    "slowcpu_leader_90000",
     "slowcpu_leader_100000",
     "slowcpu_leader_200000"
 ]
@@ -52,8 +60,8 @@ def plot_baseline():
 initial_fault_plot = ["128", "256", "512", "50000", "100000", "200000"]
 
 def plot_fault():
-    plt.rcParams["figure.figsize"] = (12, 12)
-    fig, axs = plt.subplots(2, 2)
+    plt.rcParams["figure.figsize"] = (16, 16)
+    fig, axs = plt.subplots(3, 2)
     
     '''
     Four plots:
@@ -69,20 +77,23 @@ def plot_fault():
             y.append(perf["latency"])
         if fault == "nofault":
             for i in range(2):
-                for j in range(2):
-                    axs[i, j].plot(x, y, marker=".", linestyle="-", label="No fault")
+                axs[0, i].plot(x, y, marker=".", linestyle="-", label="No fault")
         
         if "leader" in fault and any(num in fault for num in initial_fault_plot):
             axs[0, 0].plot(x, y, marker=markers[i % 9], linestyle="-", label=fault)
         if "follower" in fault and any(num in fault for num in initial_fault_plot):
             axs[0, 1].plot(x, y, marker=markers[i % 9], linestyle="-", label=fault)
-        if "slowcpu" in fault:
+        if "slowcpu" in fault and "leader" in fault:
             axs[1, 0].plot(x, y, marker=markers[i % 9], linestyle="-", label=fault)
-        if "memcontention" in fault:
+        if "slowcpu" in fault and "follower" in fault:
             axs[1, 1].plot(x, y, marker=markers[i % 9], linestyle="-", label=fault)
+        if "memcontention" in fault and "leader" in fault:
+            axs[2, 0].plot(x, y, marker=markers[i % 9], linestyle="-", label=fault)
+        if "memcontention" in fault and "follower" in fault:
+            axs[2, 1].plot(x, y, marker=markers[i % 9], linestyle="-", label=fault)
 
 
-    for i in range(2):
+    for i in range(3):
         for j in range(2):
             axs[i, j].set(xlabel="Throughput (ops/sec)", ylabel="Average Latency (us)")
             axs[i, j].legend()
@@ -91,12 +102,14 @@ def plot_fault():
     # axs[0, 1].get_figure().savefig('assets/follower.png')
     # axs[1, 0].get_figure().savefig('assets/cpu.png')
     # axs[1, 1].get_figure().savefig('assets/memory.png')
-    axs[0, 0].set_title("leader faults")
-    axs[0, 1].set_title("follower faults")
-    axs[1, 0].set_title("slow CPU")
-    axs[1, 1].set_title("memory contention")
+    axs[0, 0].set_title("Figure 2: leader faults")
+    axs[0, 1].set_title("Figure 3: follower faults")
+    axs[1, 0].set_title("Figure 4: slow CPU for leader")
+    axs[1, 1].set_title("Figure 5: slow CPU for follower")
+    axs[2, 0].set_title("Figure 6: memory contention for leader")
+    axs[2, 1].set_title("Figure 7: memory contention for follower")
 
-    axs[1, 1].get_figure().savefig('assets/fault.png')
+    axs[0, 0].get_figure().savefig('assets/fault.png')
 
 # plot_baseline()
 plot_fault()

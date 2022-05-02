@@ -1,5 +1,7 @@
 <h3 align="center"> Assignment #2: Testing Reliability of Quorum Systems</h1>
+
 <center>Shuyang Ji (sji15)</center>
+
 #### 1. Select a Quorum System
 
 **Q1: What is your quorum system of choice?**
@@ -17,9 +19,9 @@
 
 **Q3: What is your client workload?**
 
-<span style="color: green">I use a client workload of 10000 record count, 100000 operation count, 0.5/0.5 read/update proportion.</span> 
+<span style="color: green">I use a client workload of 10000 record count, 100000 operation count and 0.5/0.5 read/update proportion.</span> 
 
-<span style="color: green">Based on the experiment results of 1-29 threads (see Q4), 26 hits the max throughput.</span> 
+<span style="color: green">Based on the experiment results of 1-32 threads (see Q4), 26 hits the max throughput.</span> 
 
 <span style="color: green">I conclude the bottleneck is the CPU as it exceeded the 100% CPU utilization.</span> 
 
@@ -33,13 +35,13 @@
 
 **Q5: How do you simulate crash, slow CPU and memory contention?**
 
-<span style="color: green"><b>Crash:</b> By killing the process of targeted node</span> 
+<span style="color: green"><b>Crash:</b> By killing the process of targeted node.</span> 
 
 <span style="color: green"><b>Slow CPU:</b> By configuring cgroups (`cpu.cfs_quota_us` and `cpu.cfs_period_us`) to limit CPU usage of the process of targeted node in a given amount of time.</span> 
 
 <span style="color: green">Initially, I limited a node to use CPU for 0.05, 0.1 and 0.2 seconds out of every 1 second.</span>
 
-<span style="color: green"><b>Memory contention:</b> By configuring cgroups to limit memory usage of the process of targeted node</span> 
+<span style="color: green"><b>Memory contention:</b> By configuring cgroups to limit memory usage of the process of targeted node.</span> 
 
 <span style="color: green">Initially, I limited a node to use 128/256/512 MB memory.</span>
 
@@ -47,32 +49,37 @@
 
 **Q6: Please plot the performance with faults on the** **leader** **node and compare it with the baseline performance.**
 
-
-
-Killing the leader node will only slightly affect the operations. This is consistent with Raft and TiKV's fault tolerance design.
-
-
+See Figure 2.
 
 **Q7: Please explain the above results. Is it expected? Why or why not?**
 
-When I choose the quota 50000, 
+<span style="color: green">It is observed that killing the leader node will only slightly affect the operations. This is consistent with Raft and TiKV's fault tolerance design.</span>
 
+<span style="color: green">For memory contention, it is observed that when the leader can only use up to 256MB memory, it will continue to throw exceptions</span>
+
+so I decided to use more quota values to limit CPU usage in Q10.
 
 
 **Q8: Please plot the performance with faults on the** **follower** **node and compare it with the baseline performance.**
 
+See Figure 3.
 
 
 **Q9: Please explain the above results. Is it expected? Why or why not?**
+
+It is observed that killing a follower node will only slightly affect the operations. This is consistent with Raft and TiKV's fault tolerance design.
 
 Killing the follower node will only slightly affect the operations. This is consistent with Raft and TiKV's fault tolerance design.
 
 **Q10: For the slow CPU and memory contention, could you vary the level of slowness/contention and report the results?**
 
+See Figure 4 for slow CPU and Figure 5 for memory contention.
+
 I observe that when a follower is limited by a memory contention of 128MB, the node will not be able to operate normally (causing `mark store's regions need be refill` exception) and the throughoutput will decrease. I picked 160, 192 and 224 MB as memory quotas for further testing.
 
 I found the result can be a bit flaky. In one run, 160MB memory limit of a follower will not affect update operations. However, 192 MB will cause `mark store's regions need be refill` exception and result in very low throughoutput and long latency.
 
+For slow CPU, no node will throw exceptions. For cases when either leader or follower is on the slow CPU, the 
 
 #### References
 * https://github.com/pingcap/tiup/blob/master/doc/user/overview.md
