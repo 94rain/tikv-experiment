@@ -1,0 +1,28 @@
+[2022/05/02 00:34:46.149 -05:00] [INFO] [client.go:378] ["[pd] create pd client with endpoints"] [pd-address="[127.0.0.1:2379]"]
+[2022/05/02 00:34:46.153 -05:00] [INFO] [base_client.go:350] ["[pd] switch leader"] [new-leader=http://127.0.0.1:2379] [old-leader=]
+[2022/05/02 00:34:46.153 -05:00] [INFO] [base_client.go:105] ["[pd] init cluster id"] [cluster-id=7093007704025678109]
+[2022/05/02 00:34:46.153 -05:00] [INFO] [client.go:673] ["[pd] tso dispatcher created"] [dc-location=global]
+***************** properties *****************
+"recordcount"="10000"
+"readproportion"="0.5"
+"operationcount"="100000"
+"insertproportion"="0"
+"threadcount"="26"
+"dotransactions"="true"
+"workload"="core"
+"requestdistribution"="uniform"
+"tikv.pd"="127.0.0.1:2379"
+"tikv.type"="raw"
+"readallfields"="true"
+"updateproportion"="0.5"
+"scanproportion"="0"
+**********************************************
+READ   - Takes(s): 9.9, Count: 22956, OPS: 2311.0, Avg(us): 446, Min(us): 121, Max(us): 109297, 99th(us): 2000, 99.9th(us): 4000, 99.99th(us): 110000
+UPDATE - Takes(s): 9.9, Count: 23156, OPS: 2340.5, Avg(us): 10760, Min(us): 3835, Max(us): 120843, 99th(us): 24000, 99.9th(us): 107000, 99.99th(us): 110000
+READ   - Takes(s): 19.9, Count: 46047, OPS: 2310.0, Avg(us): 422, Min(us): 121, Max(us): 109297, 99th(us): 1000, 99.9th(us): 3000, 99.99th(us): 74000
+UPDATE - Takes(s): 19.9, Count: 46180, OPS: 2321.3, Avg(us): 10816, Min(us): 3835, Max(us): 127001, 99th(us): 25000, 99.9th(us): 109000, 99.99th(us): 126000
+Run finished, takes 22.1645987s
+READ   - Takes(s): 22.1, Count: 49933, OPS: 2259.7, Avg(us): 422, Min(us): 121, Max(us): 109297, 99th(us): 1000, 99.9th(us): 3000, 99.99th(us): 74000
+UPDATE - Takes(s): 22.1, Count: 50062, OPS: 2269.6, Avg(us): 10880, Min(us): 2645, Max(us): 342700, 99th(us): 25000, 99.9th(us): 113000, 99.99th(us): 340000
+[2022/05/02 00:35:08.318 -05:00] [INFO] [client.go:754] ["[pd] stop fetching the pending tso requests due to context canceled"] [dc-location=global]
+[2022/05/02 00:35:08.318 -05:00] [INFO] [client.go:692] ["[pd] exit tso dispatcher"] [dc-location=global]

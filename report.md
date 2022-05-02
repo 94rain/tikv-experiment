@@ -15,6 +15,10 @@
 **Q2: Please describe your configuration.**
 <span style="color: green">The experiments are run on a Ubuntu VM within MacOS with 8 cores CPU (M1 ARM) and 8 GB of memory.</span>
 
+<span style="color: green">The psedo-distributed setup will contain 1 PD (Placement driver, cluster manager of TiKV) node and 3 TiKV nodes.</span> 
+
+<span style="color: green">(3-node is discouraged but due to limitation of computational resources, it is nearly impossible to accomodate more nodes.)</span>
+
 <span style="color: green">I use go-ycsb (the Golang port of YCSB) as the client to measure performance.</span>
 
 **Q3: What is your client workload?**
@@ -59,7 +63,7 @@ See Figure 2.
 
 <span style="color: green">For slow CPU, initially, I limited a node to use CPU for 0.05, 0.1 and 0.2 seconds out of every 1 second. It is observed that operations are slowed down but can still be processed. When the leader can only use the CPU up to 0.1s out of 1s, the throughput is 16% of the benchmark performance. In particular, when the leader is limited to use CPU 0.05s out of 1s, the throughput is extremely close to 0 and the latency is at the scale of $10^5-10^6$ microseconds. Additional quota values between 0.05 and 0.1 seconds are picked in Q10 for further experiments.</span> 
 
-<span style="color: green">For memory contention, initially, I limited a node to use 128/256/512 MB memory. It is observed that when leader can only use 512MB memory, the throughput is 25% of the benchmark performance. However, when the leader can only make use of 256MB  or less memory, the update operations will fail and continue to throw exceptions `batchRecvLoop fails when receiving, needs to reconnect`, `mark store's regions need be refill` and `init create streaming fail` ([See full log](https://github.com/94rain/tikv-experiment/blob/main/logs/memcontention_leader_256)). This is unexpected as fault tolerance does not work. It is expected to elect a new leader when it fails to process operations. Additional quota values between 256MB and 512MB are picked in Q10 for further experiments.</span>
+<span style="color: green">For memory contention, initially, I limited a node to use 128/256/512 MB memory. It is observed that when leader can only use 512MB memory, the throughput is 25% of the benchmark performance. However, when the leader can only make use of 128MB  or less memory, the update operations will fail and continue to throw exceptions `batchRecvLoop fails when receiving, needs to reconnect`, `mark store's regions need be refill` and `init create streaming fail` ([See full log](https://github.com/94rain/tikv-experiment/blob/main/logs/memcontention_leader_256)). This is unexpected as fault tolerance does not work. It is expected to elect a new leader when it fails to process operations. Additional quota values between 128MB and 256MB are picked in Q10 for further experiments.</span>
 
 <span style="color: green">We obtain an initial conclusion that for slow CPU on leader, operations are slowed down but can still be processed but memory contention on the leader could result in operation failures.</span>
 
@@ -83,19 +87,11 @@ See Figure 2.
 
 Following Q7 and Q9, further quota values are picked for further experiments. For slow CPU, values between 0.1s and 0.05s with a step decrease of 0.01s (out of 1s) are picked. For memory contention, values between 256MB and 512MB with a step decrease of 32MB are picked.
 
-For slow CPU on leader, from Figure 4 we can confirm that operations are slowed down but can still be processed. We found flakniess that when leader can use CPU up to 0.09 or 0.07s out of 1s, the throughput is higher 
+For slow CPU on leader, from Figure 4 we can further confirm our previous conclusion that operations are slowed down but can still be processed. We found some outliers that when leader can use CPU up to 0.09 or 0.07s out of 1s, the throughput is higher than that of 0.2s out of 1s. Repeating the experiment will usually not get a straightly negative correlation due to flakiness. I conjecture that this is due to the small scale of this experiment, which resulted in imbalance of storage. If there are more nodes, the result may be a more straightly negative correlation.
 
-The relation is not a straightly negative correlation due to flakiness. 
+For memory contention on leader, the result can also be a bit flaky. In one run, 224MB memory limit of a follower will not affect update operations. However, 256 MB will cause `mark store's regions need be refill` exception and result in very low throughput and high latency.
 
-We found 
-
-For slow CPU on 
-
-I found the result can be a bit flaky. In one run, 160MB memory limit of a follower will not affect update operations. However, 192 MB will cause `mark store's regions need be refill` exception and result in very low throughoutput and long latency.
-
-For slow CPU, no node will throw exceptions. For cases when either leader or follower is on the slow CPU, the 
-
-
+We are not able to find a specific minimal memory limit for the TiKV leader to process update operations without failures, but only to calculate the successful rate of a given memory quota, which can be further investigated.
 
 
 
