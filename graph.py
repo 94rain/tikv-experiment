@@ -57,7 +57,7 @@ def plot_baseline():
     plt.savefig("assets/baseline.png")
     plt.clf()
 
-initial_fault_plot = ["128", "256", "512", "50000", "100000", "200000"]
+initial_fault_plot = ["128", "256", "512", "50000", "100000", "200000", "crash"]
 
 def plot_fault():
     plt.rcParams["figure.figsize"] = (16, 16)
@@ -78,6 +78,11 @@ def plot_fault():
         if fault == "nofault":
             for i in range(2):
                 axs[0, i].plot(x, y, marker=".", linestyle="-", label="No fault")
+
+        # if "leader" in fault and "crash" in fault:
+        #     axs[0, 0].plot(x, y, marker=markers[i % 9], linestyle="-", label=fault)
+        # if "follower" in fault and "crash" in fault:
+        #     axs[0, 1].plot(x, y, marker=markers[i % 9], linestyle="-", label=fault)
         
         if "leader" in fault and any(num in fault for num in initial_fault_plot):
             axs[0, 0].plot(x, y, marker=markers[i % 9], linestyle="-", label=fault)
@@ -109,7 +114,8 @@ def plot_fault():
     axs[2, 0].set_title("Figure 6: memory contention for leader")
     axs[2, 1].set_title("Figure 7: memory contention for follower")
 
-    axs[0, 0].get_figure().savefig('assets/fault.png')
+    # axs[0, 0].get_figure().savefig('assets/fault.png')
+    axs[0, 0].get_figure().savefig('assets/crash.png')
 
 # plot_baseline()
 plot_fault()
