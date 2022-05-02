@@ -1,8 +1,5 @@
 # TiKV fail-slow testing
 
-By default, TiKV uses three replicas to form a Raft Group
-
-
 ## Setup
 
 1. Install TiUP: `curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh`
@@ -25,3 +22,5 @@ By default, TiKV uses three replicas to form a Raft Group
 * https://tikv.org/blog/double-system-read-throughput/
 
 -->
+## Result
+See [Report](Report.md).

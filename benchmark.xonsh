@@ -9,7 +9,7 @@ experiment_folder = "T4cm2Wk" # random generated string by tiup, check ~/.tiup/d
 
 def restart():
     tiup clean --all
-    tiup playground --pd 1 --kv 3
+    tiup playground --pd 1 --kv 3 --without-monitor
     sleep(10)
 
 def get_pids():
@@ -80,7 +80,8 @@ def run_baseline():
     
 def run_slow_cpu():
     period = 1000000
-    quotas = [50000, 100000, 200000]
+#    quotas = [50000, 100000, 200000]
+    quotas = [i for range(90000, 40000, -10000)]
 
     # follower slow cpu
     for quota in quotas:
@@ -105,7 +106,7 @@ def run_slow_cpu():
         sleep(10)
     
 def run_memory_contention():
-    quotas = [256, 224, 192, 160]
+    quotas = [512, 256, 224, 192, 160, 128]
 
 #    # follower memory contention
 #    for quota in quotas:

@@ -41,15 +41,21 @@
 
 <span style="color: green"><b>Crash:</b> By killing the process of targeted node</span> 
 
-<span style="color: green"><b>Slow CPU:</b> By configuring cgroups to limit CPU usage of the process of targeted node</span> 
+<span style="color: green"><b>Slow CPU:</b> By configuring cgroups (`cpu.cfs_quota_us` and `cpu.cfs_period_us`) to limit CPU usage of the process of targeted node in a given amount of time.</span> 
+
+<span style="color: green">Initially, I limited a node to use CPU for 0.05, 0.1 and 0.2 seconds out of every 1 second.</span>
 
 <span style="color: green"><b>Memory contention:</b> By configuring cgroups to limit memory usage of the process of targeted node</span> 
+
+<span style="color: green">Initially, I limited a node to use 128/256/512 MB memory.</span>
 
 
 
 **Q6: Please plot the performance with faults on the** **leader** **node and compare it with the baseline performance.**
 
-![](assets/leader.png)
+![](assets/graph.py)
+
+Killing the leader node will only slightly affect the operations. This is consistent with Raft and TiKV's fault tolerance design.
 
 
 
@@ -63,8 +69,26 @@ When I choose the quota 50000,
 
 ![](assets/follower.png)
 
+
+
 **Q9: Please explain the above results. Is it expected? Why or why not?**
 
+Killing the follower node will only slightly affect the operations. This is consistent with Raft and TiKV's fault tolerance design.
 
 
 **Q10: For the slow CPU and memory contention, could you vary the level of slowness/contention and report the results?**
+
+![](assets/cpu.png)
+
+![](assets/memory.png)
+
+I observe that when a follower is limited by a memory contention of 128MB, the node will not be able to operate normally (causing `mark store's regions need be refill` exception) and the throughoutput will decrease. I picked 160, 192 and 224 MB as memory quotas for further testing.
+
+I found the result can be a bit flaky. In one run, 160MB memory limit of a follower will not affect update operations. However, 192 MB will cause `mark store's regions need be refill` exception and result in very low throughoutput and long latency.
+
+
+#### References
+* https://github.com/pingcap/tiup/blob/master/doc/user/overview.md
+* https://github.com/pingcap/go-ycsb
+* https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/resource_management_guide/sec-cpu
+* https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/resource_management_guide/sec-memory
